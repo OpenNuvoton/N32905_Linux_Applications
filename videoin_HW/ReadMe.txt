@@ -1,0 +1,1 @@
+Driver arch-Please select "W55FA93 video capture preview hardware mode"
