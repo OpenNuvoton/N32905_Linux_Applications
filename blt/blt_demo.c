@@ -259,6 +259,12 @@ void _DemoBitBlt_Flush(void)
 			fprintf( stderr, "set BLIT parameter failed:%d\n", errno );
 		}
 
+        /* In most cases, source images are non-premultiplied alpha when alpha is applied. */
+        if( ( ioctl( g_sDemo_BitBlt.blt_fd, BLT_SRCFMT_NONPREMULALPHA, NULL ) ) < 0 )
+        {
+            fprintf( stderr, "set BLIT parameter (BLT_SRCFMT_NONPREMULALPHA) failed:%d\n", errno );
+        }
+
 		if ( ( ioctl( g_sDemo_BitBlt.blt_fd, BLT_TRIGGER, NULL ) ) < 0 )
 		{
 			fprintf( stderr, "trigger BLT failed:%d\n", errno );
